@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: #f091a9;
+  overflow: hidden;
+}
+
+/* SLIDES */
+.slide {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.slide.active {
+  display: flex;
+}
+
+/* TEXT */
+h1 { color: #d6336c; margin-top: 10px; }
+h2 { color: #b0003a; }
+
+/* BUTTON GROUP */
+.buttons {
+  display: flex;
+  gap: 60px;
+  margin-top: 25px;
+}
+
+/* BUTTONS */
+button {
+  padding: 15px 35px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover { transform: scale(1.1); }
+
+.yes { background: #ff4d6d; color: white; }
+.no { background: #ffe5ec; color: #800020; }
+.gift { background: #de1111; color: white; }
+.retry { margin-top: 25px; background: #ffb3c6; color: #800020; }
+
+/* FLOATING HEARTS */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  animation: float 6s linear forwards;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* FIRST SLIDE IMAGES */
+.first-slide-img-left {
+  position: absolute;
+  top: -70px;
+  left: 100px;
+  width: 450px;
+}
+
+.first-slide-img-right {
+  position: absolute;
+  top: -20px;
+  right: 150px;
+  width: 350px;
+}
+
+.first-slide-img-bottom-left {
+  position: absolute;
+  bottom: 10px;
+  left: 200px;
+  width: 150px;
+}
+
+.first-slide-img-center {
+  width: 200px;
+  margin-bottom: -120px;
+}
+
+/* SLIDE 2 IMAGE */
+.slide2-img {
+  width: 150px;
+  margin-top: -50px;
+}
+
+/* SLIDE 6 CENTER IMAGE */
+.slide6-center-img {
+  width: 500px;
+  margin-bottom: -50px;
+}/* SLIDE 6 SIDE IMAGES */
+.slide6-left-img {
+  position: absolute;
+  left: 10px;   /* adjust horizontally */
+  top: 85%;     /* vertical center */
+  transform: translateY(-50%);
+  width: 700px; /* adjust size */
+  z-index: 10;
+}
+
+.slide6-right-img {
+  position: absolute;
+  right: 70px;  /* adjust horizontally */
+  top: 20%;
+  transform: translateY(-50%);
+  width: 300px; /* adjust size */
+  z-index: 10;
+}
+/* SLIDE 4 CENTER IMAGE */
+.slide4-center-img {
+  width: 950px;        /* adjust size */
+  margin-bottom: -50px; /* space from button */
+  max-width: 100%;      /* optional: keep it responsive */
+}
+
+
+
+/* SLIDE 8 MANUAL IMAGE CONTROLS */
+.slide8-left-1 { position: absolute; left: 60px; top: 10%; width: 600px; }
+.slide8-left-2 { position: absolute; left: 2px; top: 47%; width: 600px; }
+.slide8-right-1 { position: absolute; right: 50px; top: 1%; width: 600px; }
+.slide8-right-2 { position: absolute; right: 7px; top: 47%; width: 600px; }
+.slide8-center { width: 400px; margin-bottom: -10px; }
+
+/* TOP LEFT IMAGE – ONLY ON SLIDE 1 */
+.slide1-top-left-img {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  width: 400px;  /* adjust size */
+  z-index: 50;
+}
+/* SLIDE 1 – TOP RIGHT IMAGE (ONLY VISIBLE ON SLIDE 1) */
+.slide1-top-right-img {
+  position: absolute;
+  top: 10px;      /* adjust vertical position */
+  right: 50px;   /* adjust horizontal position */
+  width: 700px;   /* adjust size */
+  z-index: 50;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<!-- SLIDE 0 -->
+<div class="slide active">
+  <img src="hearts.png" class="first-slide-img-left">
+  <img src="14th.png" class="first-slide-img-right">
+  <img src="plane.png" class="first-slide-img-bottom-left">
+  <img src="huggy wuggy.png" class="first-slide-img-center">
+
+  <h1>Hey baby 💕</h1>
+  <h2>Will you be my Valentine?</h2>
+
+  <div class="buttons">
+    <button class="yes" onclick="goToSlide(1)">YES 💖</button>
+    <button class="no" onclick="goToSlide(2)">NO 😢</button>
+  </div>
+</div>
+
+<!-- SLIDE 1 – PICK YOUR GIFT -->
+<div class="slide">
+  <!-- TOP LEFT IMAGE -->
+  <img src="cat2.png" alt="Top Left Decoration" class="slide1-top-left-img">
+
+  <!-- TOP RIGHT IMAGE -->
+  <img src="flowercat.png" alt="Top Right Decoration" class="slide1-top-right-img">
+
+  <h1>Yayyyy, you said yes! 😍</h1>
+  <h2>I made this for you hihi</h2>
+
+  <div class="buttons">
+    <button class="gift" onclick="goToSlide(3)">GIFT 1</button>
+    <button class="gift" onclick="goToSlide(5)">GIFT 2</button>
+    <button class="gift" onclick="goToSlide(7)">GIFT 3</button>
+  </div>
+</div>
+
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h1>why… 💔</h1>
+  <img src="bear.png" alt="Broken Heart" class="slide2-img">
+  <button class="retry" onclick="goToSlide(0)">TRY AGAIN</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  
+  <h2>Ready for your surprise?</h2>
+  <button class="yes" onclick="goToSlide(4)">Open Gift 💝</button>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <img src="collagephoto.png" class="slide4-center-img" alt="Gift 1 Image">
+  <button class="retry" onclick="goToSlide(1)">Pick Another Gift 🎁</button>
+</div>
+
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  
+  <h2>Something beautiful awaits 🌸</h2>
+  <button class="yes" onclick="goToSlide(6)">Open Gift 💝</button>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <img src="penguin.png" class="slide6-left-img" alt="Left Decoration">
+  <img src="letter.png" class="slide6-center-img" alt="Gift 2 Image">
+  <img src="xoxo.png" class="slide6-right-img" alt="Right Decoration">
+  <button class="retry" onclick="goToSlide(1)">Pick Another Gift 🎁</button>
+</div>
+
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  
+  <h2>This one is special 😌</h2>
+  <button class="yes" onclick="goToSlide(8)">Open Gift 💝</button>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide">
+  <img src="slide2.png" class="slide8-left-1">
+  <img src="slide4.png" class="slide8-left-2">
+  <img src="slide3.png" class="slide8-right-1">
+  <img src="slide1.png" class="slide8-right-2">
+  <img src="flower.png" class="slide8-center">
+  <button class="retry" onclick="goToSlide(1)">Pick Another Gift 🎁</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = 0;
+
+function goToSlide(i) {
+  slides[current].classList.remove('active');
+  current = i;
+  slides[current].classList.add('active');
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+  document.querySelector('.hearts').appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 350);
+</script>
+
+</body>
+</html>
